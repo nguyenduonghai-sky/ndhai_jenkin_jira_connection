@@ -61,12 +61,12 @@ node() {
     }
 	stage('Create Test execution in JIRA') {
         echo "Create Test execution in JIRA"
-        def testIssue = [fields: [ project: [key: 'DEMO'],
+        def testIssue = [fields: [ project: [key: 'XRAY'],
                                          summary: 'JMeter performance results',
                                          description: 'Build URL:  ' + env.BUILD_URL+ '.\n\nDetailed dashboard report at: ' + env.JOB_URL + 'ws/dashboard/index.html\n\n*Aggregate results summary*\n\n ' + env.AGGERATE_TABLE + '}\n',
                                          issuetype: [id: '10007']]]
 
-        response = jiraNewIssue issue: testIssue, site: 'local_jira'
+        response = jiraNewIssue issue: testIssue, site: 'nguyenduonghai.atlassian.net'
 
         echo response.successful.toString()
         echo response.data.toString()
